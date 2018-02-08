@@ -55,6 +55,8 @@ def add_page(request, category_name_slug):
 
 def show_category(request, category_name_slug):
 	context_dict = {}
+	print(request.method)
+	print(request.user)
 
 	try:
 
@@ -78,9 +80,15 @@ def show_category(request, category_name_slug):
 	return render(request, 'rango/category.html', context_dict)
 
 def about(request):
-	return HttpResponse('rango says this is the about page')  
+
+	print(request.method )
+	print(request.user)
+	return render(request, 'rango/about.html', {}) 
 
 def rangImage(request):
-	return HttpResponse('rango says here is the immage')   
+	print(request.method)
+	print(request.user)
+	return render(request, 'rango/about.html',{})
+	  
 
 # Create your views here.

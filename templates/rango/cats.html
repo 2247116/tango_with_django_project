@@ -1,0 +1,31 @@
+﻿<ul> 
+    {%ifcats%}
+        {% for c in cats %}
+            <li>
+            <a href="{% url 'show_category' c.slug %}">{{ c.name }}</a>
+
+            </li>
+        {% endfor %} 
+    {%else%}
+        <li><strong>There are no categories present.</strong></li> 
+    {% endif %}
+</ul>
+
+{% for c in cats %}
+    {% if c == act_cat %}
+    <li>
+     <strong>
+        <a href="{% url 'show_category' c.slug %}">{{ c.name }}</a> </strong>
+    </li> 
+    {% else %}
+    <li>
+    <a href="{% url 'show_category' c.slug %}">{{ c.name }}</a>
+    </li> 
+    {% endif %}
+{% endfor %}
+
+<div>
+{% block sidebar_block %}
+        {% get_category_list %}
+    {% endblock %}
+</div>
