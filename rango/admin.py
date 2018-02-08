@@ -2,6 +2,7 @@ from django.contrib import admin
 from rango.models import Category
 from rango.models import page
 from django.contrib import admin
+from rango.models import UserProfile
 
 
 class CategoryAdmin(admin.ModelAdmin):
