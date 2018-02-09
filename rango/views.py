@@ -38,9 +38,9 @@ def register(request):
 			if 'picture' in request.FILES:
 				profile.picture = request.FILES['picture']
 
-				profile.save()
+			profile.save()
 
-				registered = True
+			registered = True
 
 		else:
 			print(user_form.errors, profile_form.errors)
@@ -48,7 +48,10 @@ def register(request):
 		user_form = UserForm()
 		profile_form = UserProfileForm()
 
-	return render(request, 'rango/register.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
+	return render(request, 'rango/register.html',
+                  {'user_form': user_form,
+                   'profile_form': profile_form,
+                   'registered': registered})
 
 def add_category(request):
 	form = CategoryForm()
@@ -85,6 +88,8 @@ def add_page(request, category_name_slug):
 	context_dict = {'form':form, 'category': category}
 	return render(request, 'rango/add_page.html', context_dict)
 
+def get_category_list(cat = None):
+	return{'cats': Category.objects.all(),'act_cat':cat}
 
 def show_category(request, category_name_slug):
 	context_dict = {}
