@@ -7,6 +7,7 @@
     <meta charset = "UTF-8">
         <title>
             Rango -
+
             {% block title_block %}
                 How to Tango with Django!
             {% endblock %}
@@ -36,14 +37,15 @@
             </ul>
 
 
-
+        <div>
             <ul>
-                <li><a href="{% url 'add_category' %}">Add a New Category</a></li> <li><a href="{% url 'about' %}">about</a></li>
-                 <li><a href="{% url 'index' %}">Index</a></li>
+                <li><a href="{% url 'add_category' %}">Add a New Category</a></li> 
+                <li><a href="{% url 'about' %}">about</a></li>
+                <li><a href="{% url 'index' %}">Index</a></li>
                 <li><a href="{% url 'register' %}">Sign Up</a></li>
             </ul>
 
-
+        </div>
 
         </div>
 

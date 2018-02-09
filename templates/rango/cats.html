@@ -1,31 +1,11 @@
-﻿<ul> 
-    {%ifcats%}
+﻿    <ul class="nav nav-pills flex-column">
+    {% if cats %}
         {% for c in cats %}
-            <li>
-            <a href="{% url 'show_category' c.slug %}">{{ c.name }}</a>
-
-            </li>
-        {% endfor %} 
-    {%else%}
-        <li><strong>There are no categories present.</strong></li> 
+            {% if c == act_cat %}
+                <li class="nav-item"><strong><a href="{% url 'show_category' c.slug %}">{{ c.name }}</a></strong></li>
+            {% else  %}
+                 <li class="nav-item"><a href="{% url 'show_category' c.slug %}">{{ c.name }}</a></li>
+            {% endif %}
+        {% endfor %}
     {% endif %}
-</ul>
-
-    {% for c in cats %}
-        {% if c == act_cat %}
-        <li>
-         <strong>
-            <a href="{% url 'show_category' c.slug %}">{{ c.name }}</a> </strong>
-        </li> 
-        {% else %}
-            <li>
-                <a href="{% url 'show_category' c.slug %}">{{ c.name }}</a>
-            </li> 
-        {% endif %}
-    {% endfor %}
-
-<div>
-{% block sidebar_block %}
-        {% get_category_list %}
-    {% endblock %}
-</div>
+    </ul>
